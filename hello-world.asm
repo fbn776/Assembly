@@ -3,8 +3,6 @@ ASSUME CS:CODE,DS:DATA
 DATA SEGMENT
     MSG1 DB "Hello world$"
     M2 DB 10,13,"Enter a: $"
-    M3 DB 10,13,"Enter b: $"
-    M4 DB "Sum is: $"
 DATA ENDS
 
 PRINT MACRO MSG
@@ -12,8 +10,6 @@ PRINT MACRO MSG
     LEA DX, MSG
     INT 21h
 ENDM
-
-
 
 CODE SEGMENT
     start:
