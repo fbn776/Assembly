@@ -109,3 +109,9 @@ Other registers may be used to pass parameters for the function, and the functio
 | **10h**           | **Display String (without `$` terminator)**             | **DX** = Address of the string (no `$` required)                     | None                                                       |
 | **4Ch**           | **Exit Program**                                       | **AL** = Exit code (optional, default = 0)                           | None                                                       |
 
+## CMP
+
+Result of `CMP AL, BL`:
+- If `AL > BL`: The Zero Flag (ZF) is cleared (set to 0), and the Carry Flag (CF) is also cleared. `ZF = 0 ; CF = 0`
+- If `AL == BL`: The Zero Flag (ZF) is set (1), indicating equality. `ZF = 1`
+- If `AL < BL`: The Zero Flag (ZF) is cleared (0), and the Carry Flag (CF) is set (1), indicating that AL is less than BL. `ZF = 0 ; CF = 1`
