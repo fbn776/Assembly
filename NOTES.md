@@ -1,5 +1,62 @@
 # NOTES
 
+## Registers in 8086
+
+1. General-Purpose Registers
+    These are 16-bit registers that can be used for arithmetic, logic, and data manipulation. They can also be accessed as 8-bit registers (lower and higher bytes).
+
+    - AX (Accumulator Register)
+        - AH (High byte of AX)
+        - AL (Low byte of AX)
+    - BX (Base Register)
+        - BH (High byte of BX)
+        - BL (Low byte of BX)
+    - CX (Count Register) 
+        - CH (High byte of CX)
+        - CL (Low byte of CX)
+    - DX (Data Register)
+        - DH (High byte of DX)
+        - DL (Low byte of DX)
+    - SI (Source Index Register): Used in string operations and memory addressing.
+    - DI (Destination Index Register): Used in string operations and memory addressing.
+    - BP (Base Pointer Register): Typically used for stack operations and accessing local variables.
+    - SP (Stack Pointer Register): Points to the top of the stack.
+
+2. Segment Registers
+    These are used to hold the addresses of memory segments.
+    - CS (Code Segment): Holds the base address of the code segment (where instructions are fetched from).
+    - DS (Data Segment): Holds the base address of the data segment (where data is stored).
+    - SS (Stack Segment): Holds the base address of the stack segment (used for stack operations).
+    - ES (Extra Segment): Used as an additional data segment for string operations and other purposes.
+
+3. Pointer and Index Registers
+    These are used for memory addressing in conjunction with segment registers.
+    - IP (Instruction Pointer): Holds the offset address of the next instruction to be executed (relative to the CS register).
+    - SP (Stack Pointer): Points to the top of the stack.
+    - BP (Base Pointer): Points to the base of the stack frame in stack operations.
+    - SI (Source Index): Used in string operations to point to the source operand.
+    - DI (Destination Index): Used in string operations to point to the destination operand.
+
+4. Flag Register (Status Register)
+    The flag register holds several individual bits that control the operation of the CPU and indicate certain conditions (e.g., zero, carry, overflow, etc.).
+    - Carry Flag (CF): Set if there is a carry from an arithmetic operation.
+    - Parity Flag (PF): Set if the number of set bits in the result is even.
+    - Auxiliary Carry Flag (AF): Set if there is a carry from bit 3 to bit 4 in a binary-coded decimal (BCD) operation.
+    - Zero Flag (ZF): Set if the result of an operation is zero.
+    - Sign Flag (SF): Set if the result is negative.
+    - Trap Flag (TF): Used for single-step debugging.
+    - Interrupt Flag (IF): Enables or disables interrupts.
+    - Direction Flag (DF): Controls the direction of string operations (increment or decrement).
+    - Overflow Flag (OF): Set if there is an overflow in signed arithmetic operations.
+
+5. Special Purpose Registers
+    These registers are typically used for specific functions:
+    - IP (Instruction Pointer): Holds the offset of the next instruction to execute, relative to the CS register.
+    - Flags Register: Contains the status flags that indicate the outcome of operations.
+
+
+
+
 ## Basic Template
 
 The basic template for a 16bit 8086 MASM program is; See [template.asm](template.asm)
@@ -51,3 +108,4 @@ Other registers may be used to pass parameters for the function, and the functio
 | **0Ah**           | **Read a Buffered String**                             | **DX** = Address of input buffer (first byte = max buffer size)      | Input string in buffer; **AL** = number of characters read |
 | **10h**           | **Display String (without `$` terminator)**             | **DX** = Address of the string (no `$` required)                     | None                                                       |
 | **4Ch**           | **Exit Program**                                       | **AL** = Exit code (optional, default = 0)                           | None                                                       |
+
